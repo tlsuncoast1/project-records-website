@@ -191,15 +191,18 @@ export default function Page() {
                 </a>
               </div>
             </div>
-       <div className="relative flex justify-start">
-  {/* Glowing orb */}
-  <div className="absolute -inset-10 rounded-full bg-cyan-500/40 blur-3xl animate-pulse" />
+<div className="relative flex justify-start">
+  {/* Glowing orb (bottom layer) */}
+  <div className="absolute -inset-12 rounded-full bg-cyan-500/25 blur-[120px]" />
 
-  {/* Logo on top */}
+  {/* Dark shield behind logo (middle layer) */}
+  <div className="absolute inset-0 rounded-full bg-black/40 z-10" />
+
+  {/* Logo (top layer) */}
   <img
     src="/brand/project-records-lockup.png"
     alt="Project Records LLC"
-    className="relative z-10 max-w-full h-auto"
+    className="relative z-20 max-w-full h-auto"
   />
 </div>
 
