@@ -171,41 +171,37 @@ export default function Page() {
       </header>
 
       {/* HERO */}
-{/* HERO */}
-<section id="home" className="relative">
-  <div className="mx-auto max-w-6xl px-6 pt-16 md:pt-24 pb-16 md:pb-20">
-    
-    {/* Centered logo at top */}
-    <div className="flex justify-center mb-10">
-      <img
-        src="/brand/project-records-lockup.png"
-        alt="Project Records LLC"
-        className="max-w-[280px] md:max-w-[360px] h-auto"
-      />
-    </div>
+      <section id="home" className="relative">
+        <div className="mx-auto max-w-6xl px-6 pt-6 pb-16 md:pt-8 md:pb-20">
+          <div className="grid md:grid-cols-2 gap-10 items-center">
+            <div>
+              <h1 className="text-4xl md:text-6xl font-black leading-[1.02] text-white">
+                PROJECT <span className="text-cyan-200">RECORDS</span>
+              </h1>
+              <p className="mt-6 text-lg md:text-xl text-cyan-100/85 max-w-xl">
+                Follow us while we streamline services — music and videos are live.
+              </p>
+              <div className="mt-7 flex flex-wrap gap-3">
+                <NeonButton href="#listen">Listen</NeonButton>
+                <a
+                  href="#work"
+                  className="inline-flex items-center gap-2 px-5 py-3 rounded-2xl border border-white/10 text-cyan-100/80 hover:text-white hover:border-cyan-300/30 transition-colors"
+                >
+                  See our work
+                </a>
+              </div>
+            </div>
+        <div className="flex justify-start">
+  <img
+    src="/brand/project-records-lockup.png"
+    alt="Project Records LLC"
+    style={{ display: "block", maxWidth: "100%", height: "auto" }}
+  />
+</div>
 
-    <div className="grid md:grid-cols-2 gap-10 items-center">
-      <div>
-        <h1 className="text-4xl md:text-6xl font-black leading-[1.02] text-white">
-          PROJECT <span className="text-cyan-200">RECORDS</span>
-        </h1>
-        <p className="mt-6 text-lg md:text-xl text-cyan-100/85 max-w-xl">
-          Follow us while we streamline services — music and videos are live.
-        </p>
-        <div className="mt-7 flex flex-wrap gap-3">
-          <NeonButton href="#listen">Listen</NeonButton>
-          <a
-            href="#work"
-            className="inline-flex items-center gap-2 px-5 py-3 rounded-2xl border border-white/10 text-cyan-100/80 hover:text-white hover:border-cyan-300/30 transition-colors"
-          >
-            See our work
-          </a>
+          </div>
         </div>
-      </div>
-    </div>
-  </div>
-</section>
-
+      </section>
 
       {/* LISTEN */}
       <Section id="listen" title="Listen" kicker="Follow & stream">
