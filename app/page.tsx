@@ -253,7 +253,7 @@ export default function Page() {
             const body = encodeURIComponent(
               `Name: ${data.get("name")}\nEmail: ${data.get("email")}\nType: ${data.get("type")}\n\nMessage:\n${data.get("message")}`
             );
-            window.location.href = `mailto:hello@projectrecords.example?subject=${subject}&body=${body}`;
+            window.location.href = `mailto:tom@project-records.com?subject=${subject}&body=${body}`;
           }}
         >
           <div className="space-y-4">
