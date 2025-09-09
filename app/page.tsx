@@ -141,7 +141,6 @@ export default function Page() {
                 <a href="#about" onClick={() => setMenuOpen(false)} className="py-2 text-cyan-100/90">About</a>
                 <a href="#contact" onClick={() => setMenuOpen(false)} className="py-2 text-cyan-100/90">Contact</a>
 
-                {/* external quick buttons */}
                 <a
                   href="https://soundcloud.com/projectrecordsllc"
                   target="_blank" rel="noopener noreferrer"
@@ -178,9 +177,6 @@ export default function Page() {
             <div>
               <h1 className="text-4xl md:text-6xl font-black leading-[1.02] text-white">
                 PROJECT <span className="text-cyan-200">RECORDS</span>
-                <span className="block mt-2 text-xl md:text-2xl font-medium tracking-wide text-cyan-100/90">
-                  Music • Podcasts • Mastering
-                </span>
               </h1>
               <p className="mt-6 text-lg md:text-xl text-cyan-100/85 max-w-xl">
                 Follow us while we streamline services — music and videos are live.
@@ -195,8 +191,6 @@ export default function Page() {
                 </a>
               </div>
             </div>
-
-            {/* Exact PNG logo */}
             <div className="flex justify-center md:justify-end">
               <img
                 src="/brand/project-records-lockup.png"
@@ -241,18 +235,11 @@ export default function Page() {
 
       {/* ABOUT */}
       <Section id="about" title="About Project Records" kicker="Who we are">
-        <div className="grid md:grid-cols-2 gap-8 items-start">
-          <p>
-            Based in the Carolinas, Project Records LLC blends cinematic taste with engineering discipline.
-            Whether it’s a van-life field recording session or a controlled studio capture, we obsess over
-            clarity, feel, and release-ready polish.
-          </p>
-          <ul className="space-y-3 text-cyan-100/85">
-            <li>• Fast turnarounds with collaborative feedback rounds</li>
-            <li>• Transparent pricing and clear deliverables</li>
-            <li>• Flexible booking: remote, on-location, or studio</li>
-          </ul>
-        </div>
+        <p>
+          Based in the Carolinas, Project Records LLC blends cinematic taste with engineering discipline.
+          Whether it’s a van-life field recording session or a controlled studio capture, we obsess over
+          clarity, feel, and release-ready polish.
+        </p>
       </Section>
 
       {/* CONTACT */}
@@ -289,16 +276,10 @@ export default function Page() {
             </label>
             <label className="block">
               <span className="block text-sm text-cyan-100/80 mb-1">Project type</span>
-              <select
+              <input
                 name="type"
                 className="w-full rounded-xl bg-black/40 border border-white/10 px-4 py-3 outline-none focus:ring-2 focus:ring-cyan-400/50"
-              >
-                <option>Recording</option>
-                <option>Mixing</option>
-                <option>Mastering</option>
-                <option>Podcast Production</option>
-                <option>Sound Design</option>
-              </select>
+              />
             </label>
           </div>
           <div className="flex flex-col">
