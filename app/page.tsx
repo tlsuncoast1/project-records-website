@@ -23,6 +23,8 @@ const NeonButton = ({
   <a
     href={href}
     onClick={onClick}
+    target={href.startsWith("http") ? "_blank" : undefined}
+    rel={href.startsWith("http") ? "noopener noreferrer" : undefined}
     className={`inline-flex items-center justify-center rounded-2xl px-5 py-3 text-base font-semibold tracking-wide border border-cyan-300/30 bg-cyan-500/10 hover:bg-cyan-500/20 transition-colors ${className}`}
     style={{ color: brand.text }}
   >
@@ -66,7 +68,6 @@ export default function Page() {
         <div className="mx-auto max-w-6xl px-6">
           <div className="flex items-center justify-between h-16">
             <a href="#home" className="flex items-center gap-3">
-              {/* Using the same PNG as a small nav mark to keep brand exact */}
               <img
                 src="/brand/project-records-lockup.png"
                 alt="Project Records LLC"
@@ -75,51 +76,57 @@ export default function Page() {
                 style={{ display: "block", objectFit: "contain" }}
               />
               <div className="leading-tight">
-                <span className="block text-xs tracking-[0.2em] text-cyan-200">
-                  PROJECT
-                </span>
+                <span className="block text-xs tracking-[0.2em] text-cyan-200">PROJECT</span>
                 <span className="block text-base font-bold">Records LLC</span>
               </div>
             </a>
-            <nav className="hidden md:flex items-center gap-8 text-sm">
-              {[
-                ["Services", "#services"],
-                ["Work", "#work"],
-                ["About", "#about"],
-                ["Contact", "#contact"],
-              ].map(([label, href]) => (
-                <a
-                  key={label}
-                  href={href}
-                  className="text-cyan-100/80 hover:text-white transition-colors"
-                >
-                  {label}
-                </a>
-              ))}
-              <NeonButton href="#contact">Book a Session</NeonButton>
+
+            {/* DESKTOP NAV */}
+            <nav className="hidden md:flex items-center gap-3 text-sm">
+              <a href="#listen" className="px-3 py-2 rounded-xl text-cyan-100/80 hover:text-white">Listen</a>
+              <a href="#work" className="px-3 py-2 rounded-xl text-cyan-100/80 hover:text-white">Work</a>
+              <a href="#about" className="px-3 py-2 rounded-xl text-cyan-100/80 hover:text-white">About</a>
+              <a href="#contact" className="px-3 py-2 rounded-xl text-cyan-100/80 hover:text-white">Contact</a>
+
+              {/* External quick buttons */}
+              <a
+                href="https://soundcloud.com/projectrecordsllc"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="ml-2 inline-flex items-center rounded-2xl px-4 py-2 border border-cyan-300/30 bg-cyan-500/10 hover:bg-cyan-500/20 font-semibold"
+              >
+                SoundCloud
+              </a>
+              <a
+                href="https://www.youtube.com/@project-recordsllc"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center rounded-2xl px-4 py-2 border border-cyan-300/30 bg-cyan-500/10 hover:bg-cyan-500/20 font-semibold"
+              >
+                YouTube
+              </a>
+              <a
+                href="#contact"
+                className="ml-2 inline-flex items-center rounded-2xl px-4 py-2 border border-cyan-300/30 bg-cyan-500/10 hover:bg-cyan-500/20 font-semibold"
+              >
+                Book a Session
+              </a>
             </nav>
+
+            {/* MOBILE MENU BUTTON */}
             <button
               aria-label="Open menu"
               className="md:hidden rounded-xl border border-white/10 p-2 text-cyan-100/80"
               onClick={() => setMenuOpen((v) => !v)}
             >
-              <svg
-                width="22"
-                height="22"
-                viewBox="0 0 24 24"
-                fill="none"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <path
-                  d="M4 7h16M4 12h16M4 17h16"
-                  stroke="currentColor"
-                  strokeWidth="2"
-                  strokeLinecap="round"
-                />
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M4 7h16M4 12h16M4 17h16" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
               </svg>
             </button>
           </div>
         </div>
+
+        {/* MOBILE NAV PANEL */}
         <AnimatePresence>
           {menuOpen && (
             <motion.div
@@ -128,25 +135,36 @@ export default function Page() {
               exit={{ height: 0, opacity: 0 }}
               className="md:hidden border-t border-white/10 bg-black/60"
             >
-              <div className="px-6 py-4 flex flex-col gap-3">
-                {[
-                  ["Services", "#services"],
-                  ["Work", "#work"],
-                  ["About", "#about"],
-                  ["Contact", "#contact"],
-                ].map(([label, href]) => (
-                  <a
-                    key={label}
-                    href={href}
-                    onClick={() => setMenuOpen(false)}
-                    className="text-cyan-100/90 py-2"
-                  >
-                    {label}
-                  </a>
-                ))}
-                <NeonButton href="#contact" className="mt-2">
+              <div className="px-6 py-4 flex flex-col gap-2">
+                <a href="#listen" onClick={() => setMenuOpen(false)} className="py-2 text-cyan-100/90">Listen</a>
+                <a href="#work" onClick={() => setMenuOpen(false)} className="py-2 text-cyan-100/90">Work</a>
+                <a href="#about" onClick={() => setMenuOpen(false)} className="py-2 text-cyan-100/90">About</a>
+                <a href="#contact" onClick={() => setMenuOpen(false)} className="py-2 text-cyan-100/90">Contact</a>
+
+                {/* external quick buttons */}
+                <a
+                  href="https://soundcloud.com/projectrecordsllc"
+                  target="_blank" rel="noopener noreferrer"
+                  onClick={() => setMenuOpen(false)}
+                  className="mt-2 inline-flex items-center justify-center rounded-2xl px-5 py-3 border border-cyan-300/30 bg-cyan-500/10 hover:bg-cyan-500/20 font-semibold"
+                >
+                  SoundCloud
+                </a>
+                <a
+                  href="https://www.youtube.com/@project-recordsllc"
+                  target="_blank" rel="noopener noreferrer"
+                  onClick={() => setMenuOpen(false)}
+                  className="inline-flex items-center justify-center rounded-2xl px-5 py-3 border border-cyan-300/30 bg-cyan-500/10 hover:bg-cyan-500/20 font-semibold"
+                >
+                  YouTube
+                </a>
+                <a
+                  href="#contact"
+                  onClick={() => setMenuOpen(false)}
+                  className="inline-flex items-center justify-center rounded-2xl px-5 py-3 border border-cyan-300/30 bg-cyan-500/10 hover:bg-cyan-500/20 font-semibold"
+                >
                   Book a Session
-                </NeonButton>
+                </a>
               </div>
             </motion.div>
           )}
@@ -155,14 +173,9 @@ export default function Page() {
 
       {/* HERO */}
       <section id="home" className="relative">
-        {/* Removed extra glow/blur background to preserve the PNG’s exact appearance */}
-        <div className="mx-auto max-w-6xl px-6 pt-20 pb-24 md:pt-28 md:pb-36">
+        <div className="mx-auto max-w-6xl px-6 pt-20 pb-16 md:pt-28 md:pb-20">
           <div className="grid md:grid-cols-2 gap-10 items-center">
             <div>
-              <div className="inline-flex items-center gap-3 rounded-full border border-cyan-300/30 bg-cyan-500/10 px-3 py-1 mb-5 text-xs text-cyan-100/80">
-                <span className="h-2 w-2 rounded-full bg-cyan-300" />
-                Now booking Q4 sessions
-              </div>
               <h1 className="text-4xl md:text-6xl font-black leading-[1.02] text-white">
                 PROJECT <span className="text-cyan-200">RECORDS</span>
                 <span className="block mt-2 text-xl md:text-2xl font-medium tracking-wide text-cyan-100/90">
@@ -170,10 +183,10 @@ export default function Page() {
                 </span>
               </h1>
               <p className="mt-6 text-lg md:text-xl text-cyan-100/85 max-w-xl">
-                A neon-clean studio aesthetic with boutique engineering. From capture to release, we handle your sound with precision.
+                Follow us while we streamline services — music and videos are live.
               </p>
               <div className="mt-7 flex flex-wrap gap-3">
-                <NeonButton href="#contact">Book a Session</NeonButton>
+                <NeonButton href="#listen">Listen</NeonButton>
                 <a
                   href="#work"
                   className="inline-flex items-center gap-2 px-5 py-3 rounded-2xl border border-white/10 text-cyan-100/80 hover:text-white hover:border-cyan-300/30 transition-colors"
@@ -181,62 +194,29 @@ export default function Page() {
                   See our work
                 </a>
               </div>
-              <div className="mt-8 flex items-center gap-6 text-xs text-cyan-200/70">
-                <div className="flex items-center gap-2">
-                  <span className="h-1.5 w-1.5 bg-cyan-300 rounded-full" />
-                  Mixing
-                </div>
-                <div className="flex items-center gap-2">
-                  <span className="h-1.5 w-1.5 bg-cyan-300 rounded-full" />
-                  Mastering
-                </div>
-                <div className="flex items-center gap-2">
-                  <span className="h-1.5 w-1.5 bg-cyan-300 rounded-full" />
-                  Podcast Prod.
-                </div>
-              </div>
             </div>
 
-            {/* EXACT PNG — no transforms, no filters */}
+            {/* Exact PNG logo */}
             <div className="flex justify-center md:justify-end">
               <img
                 src="/brand/project-records-lockup.png"
                 alt="Project Records LLC"
-                // show at intrinsic size; comment out width/height to avoid scaling
-                style={{
-                  display: "block",
-                  maxWidth: "100%", // allows it to fit on small screens without distorting pixels unnecessarily
-                  height: "auto",
-                  imageRendering: "auto" // no forced pixelation or smoothing tricks
-                }}
+                style={{ display: "block", maxWidth: "100%", height: "auto" }}
               />
             </div>
           </div>
         </div>
       </section>
 
-      {/* SERVICES */}
-      <Section id="services" title="Services" kicker="What we do">
-        <div className="grid md:grid-cols-3 gap-6">
-          {[
-            { title: "Recording", desc: "Vocal booths and mobile capture with pristine preamps and noise-controlled environments." },
-            { title: "Mixing", desc: "Punchy, balanced, and wide. Hybrid ITB/analog approach with meticulous automation." },
-            { title: "Mastering", desc: "Streaming-optimized loudness, translation checks, and delivery in all required formats." },
-            { title: "Podcast Production", desc: "Editing, cleanup, music beds, and loudness normalization for broadcast consistency." },
-            { title: "Sound Design", desc: "Custom cues and branded idents for intros, reels, and trailers." },
-            { title: "Artist Development", desc: "Release planning, visual identity guidance, and distribution prep." },
-          ].map((card) => (
-            <div
-              key={card.title}
-              className="rounded-2xl p-6 border border-white/10 bg-white/5 hover:bg-white/[0.08] transition-colors"
-            >
-              <h3 className="text-xl font-bold text-white mb-2">{card.title}</h3>
-              <p className="text-cyan-100/85">{card.desc}</p>
-            </div>
-          ))}
-        </div>
-        <div className="mt-8">
-          <NeonButton href="#contact">Get a quote</NeonButton>
+      {/* LISTEN */}
+      <Section id="listen" title="Listen" kicker="Follow & stream">
+        <div className="grid sm:grid-cols-2 gap-6 max-w-3xl">
+          <NeonButton href="https://soundcloud.com/projectrecordsllc" className="w-full text-center">
+            SoundCloud → soundcloud.com/projectrecordsllc
+          </NeonButton>
+          <NeonButton href="https://www.youtube.com/@project-recordsllc" className="w-full text-center">
+            YouTube → @project-recordsllc
+          </NeonButton>
         </div>
       </Section>
 
@@ -356,14 +336,11 @@ export default function Page() {
             </span>
           </div>
           <div className="flex items-center gap-5 text-cyan-100/70">
-            <a href="#" aria-label="Instagram" className="hover:text-white">
-              Instagram
-            </a>
-            <a href="#" aria-label="YouTube" className="hover:text-white">
-              YouTube
-            </a>
-            <a href="#" aria-label="SoundCloud" className="hover:text-white">
+            <a href="https://soundcloud.com/projectrecordsllc" target="_blank" rel="noopener noreferrer" className="hover:text-white">
               SoundCloud
+            </a>
+            <a href="https://www.youtube.com/@project-recordsllc" target="_blank" rel="noopener noreferrer" className="hover:text-white">
+              YouTube
             </a>
           </div>
         </div>
@@ -371,3 +348,4 @@ export default function Page() {
     </div>
   );
 }
+
