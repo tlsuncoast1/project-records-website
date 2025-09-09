@@ -191,11 +191,15 @@ export default function Page() {
                 </a>
               </div>
             </div>
-        <div className="flex justify-start">
+       <div className="relative flex justify-start">
+  {/* Glowing orb */}
+  <div className="absolute -inset-10 rounded-full bg-cyan-500/40 blur-3xl animate-pulse" />
+
+  {/* Logo on top */}
   <img
     src="/brand/project-records-lockup.png"
     alt="Project Records LLC"
-    style={{ display: "block", maxWidth: "100%", height: "auto" }}
+    className="relative z-10 max-w-full h-auto"
   />
 </div>
 
